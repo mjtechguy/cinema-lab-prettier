@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`export-assignment.ts format 1`] = `
+    : ====================================options=====================================
+    : parsers: ["typescript"]
+    : rangeEnd: 18
+    : rangeStart: 15
+    :                                                       printWidth: 80 (default) |
+    : =====================================input======================================
+  1 | f ( );
+> 2 | export   =   f;
+    |         ^^^
+  3 | g(  )
+  4 |
+    : =====================================output=====================================
+    : f ( );
+    : export = f;
+    : g(  )
+    :
+    : ================================================================================
+`;
+
+exports[`issue-4926.ts format 1`] = `
+     : ====================================options=====================================
+     : parsers: ["typescript"]
+     : rangeEnd: 304
+     : rangeStart: 102
+     :                                                       printWidth: 80 (default) |
+     : =====================================input======================================
+   1 | class Foo {
+   2 |     /** Does this key match a given MinimalKey extending object? */
+   3 |     match(keyevent) {
+>  4 |         // 'in' doesn't include prototypes, so it's safe for this object.
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  5 |         for (let attr in this) {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  6 |             if (this[attr] !== keyevent[attr]) return false
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  7 |         }
+     | ^^^^^^^^^
+>  8 |         return true
+     | ^^^^^^^^^^^^^^^^^^^
+>  9 |     }
+     | ^^^^^
+  10 | }
+  11 |
+     : =====================================output=====================================
+     : class Foo {
+     :     /** Does this key match a given MinimalKey extending object? */
+     :     match(keyevent) {
+     :       // 'in' doesn't include prototypes, so it's safe for this object.
+     :       for (let attr in this) {
+     :         if (this[attr] !== keyevent[attr]) return false;
+     :       }
+     :       return true;
+     :     }
+     : }
+     :
+     : ================================================================================
+`;
+
+exports[`issue-7148.ts format 1`] = `
+    : ====================================options=====================================
+    : parsers: ["typescript"]
+    : rangeEnd: 59
+    : rangeStart: 29
+    :                                                       printWidth: 80 (default) |
+    : =====================================input======================================
+  1 | export default class Test {
+> 2 |   private obj = { isTest: true }
+    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 | }
+  4 |
+    : =====================================output=====================================
+    : export default class Test {
+    :   private obj = { isTest: true };
+    : }
+    :
+    : ================================================================================
+`;
+
+exports[`type-parameters-class.ts format 1`] = `
+     : ====================================options=====================================
+     : parsers: ["typescript"]
+     : rangeEnd: 44
+     : rangeStart: 43
+     :                                                       printWidth: 80 (default) |
+     : =====================================input======================================
+   1 | const before = ugly(
+   2 |    code);
+>  3 | class   Box<T =string>{
+     |             ^
+   4 |   will=
+   5 | re(   format
+   6 | )
+   7 | }
+   8 | const after = ugly(
+   9 | code   );
+  10 |
+     : =====================================output=====================================
+     : const before = ugly(
+     :    code);
+     : class Box<T = string> {
+     :   will = re(format);
+     : }
+     : const after = ugly(
+     : code   );
+     :
+     : ================================================================================
+`;
+
+exports[`type-parameters-function.ts format 1`] = `
+    : ====================================options=====================================
+    : parsers: ["typescript"]
+    : rangeEnd: 52
+    : rangeStart: 51
+    :                                                       printWidth: 80 (default) |
+    : =====================================input======================================
+  1 | const before = ugly(
+  2 |    code);
+> 3 | function   identity<T>(value:T){
+    |                     ^
+  4 |  will.re(   format
+  5 | )
+  6 | }
+  7 | const after = ugly(
+  8 | code   );
+  9 |
+    : =====================================output=====================================
+    : const before = ugly(
+    :    code);
+    : function identity<T>(value: T) {
+    :   will.re(format);
+    : }
+    : const after = ugly(
+    : code   );
+    :
+    : ================================================================================
+`;
+
+exports[`type-parameters-interface.ts format 1`] = `
+     : ====================================options=====================================
+     : parsers: ["typescript"]
+     : rangeEnd: 54
+     : rangeStart: 53
+     :                                                       printWidth: 80 (default) |
+     : =====================================input======================================
+   1 | const before = ugly(
+   2 |    code);
+>  3 | export interface   BoxT{
+     |                       ^
+   4 |   will:
+   5 | re<   format
+   6 | >}
+   7 | const after = ugly(
+   8 | code   );
+   9 |
+  10 |
+     : =====================================output=====================================
+     : const before = ugly(
+     :    code);
+     : export interface BoxT {
+     :   will: re<format>;
+     : }
+     : const after = ugly(
+     : code   );
+     :
+     :
+     : ================================================================================
+`;
+
+exports[`type-parameters-type-alias.ts format 1`] = `
+    : ====================================options=====================================
+    : parsers: ["typescript"]
+    : rangeEnd: 64
+    : rangeStart: 59
+    :                                                       printWidth: 80 (default) |
+    : =====================================input======================================
+  1 | const before = ugly(
+  2 |    code);
+> 3 | export type   SomeType<SOME_PARAM>={
+    |                             ^^^^^
+  4 | will:
+  5 | re<   format
+  6 | >};
+  7 | const after = ugly(
+  8 | code   );
+  9 |
+    : =====================================output=====================================
+    : const before = ugly(
+    :    code);
+    : export type SomeType<SOME_PARAM> = {
+    :   will: re<format>;
+    : };
+    : const after = ugly(
+    : code   );
+    :
+    : ================================================================================
+`;

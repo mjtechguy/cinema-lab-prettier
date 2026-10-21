@@ -142,3 +142,5 @@ export { default as getFileInfo } from "./common/get-file-info.js";
 export * as doc from "./document/public.js";
 export { default as version } from "./main/version.evaluate.js";
 export * as util from "./utilities/public.js";
+
+// lab: PR experiment 2026-10-21T18:00:51Z
